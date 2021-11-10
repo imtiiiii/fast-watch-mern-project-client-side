@@ -8,7 +8,7 @@ const Header = () => {
         <div
             style={
                 {
-                    height: "80vh",
+                    height: "100vh",
 
                     // backgroundColor: red[100],
                     backgroundImage: `url(${bannerbg})`,
