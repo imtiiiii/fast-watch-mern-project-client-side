@@ -26,8 +26,8 @@ const Navigation = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, letterSpacing: 5 }}>
+                        Fast Watch
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
