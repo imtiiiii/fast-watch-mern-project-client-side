@@ -10,8 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { red } from '@mui/material/colors';
 import { Container } from '@mui/material';
 import { createTheme } from '@material-ui/core';
+import useAuth from '../../../Hooks/useAuth';
 
 const Navigation = () => {
+    const { handleLogout, user } = useAuth();
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -30,6 +32,7 @@ const Navigation = () => {
                         Fast Watch
                     </Typography>
                     <Button color="inherit">Login</Button>
+                    <Button color="inherit" onClick={handleLogout}> {user?.email}logout</Button>
                 </Toolbar>
             </AppBar>
         </Box>
