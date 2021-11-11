@@ -6,7 +6,7 @@ const FocusedProduct = () => {
     return (
         <Box sx={
             {
-                width: 1, border: 1
+                width: 1, mb: 10
 
             }
         }>
