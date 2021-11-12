@@ -5,6 +5,7 @@ import Header from '../../Header/Header/Header';
 import Navigation from '../../Shared/Navigation/Navigation';
 import FeatureOfNewWatch from '../FeatureOfNewWatch/FeatureOfNewWatch';
 import FocusedProduct from '../FocusedProduct/FocusedProduct';
+import ProductsSummary from '../ProductsSummary/ProductsSummary';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Header></Header>
             <FocusedProduct></FocusedProduct>
             <FeatureOfNewWatch></FeatureOfNewWatch>
+            <ProductsSummary></ProductsSummary>
         </div>
     );
 };
