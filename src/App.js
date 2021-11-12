@@ -27,6 +27,7 @@ function App() {
             <Route path="/addproduct">
               <AddProduct></AddProduct>
             </Route>
+
           </Switch>
         </Router>
       </AuthProvider>
