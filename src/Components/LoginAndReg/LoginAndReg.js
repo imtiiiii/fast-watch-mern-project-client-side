@@ -2,6 +2,7 @@
 
 import { Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import axios from 'axios';
 import React, { useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import Navigation from '../Shared/Navigation/Navigation';
@@ -61,10 +62,10 @@ const LoginAndReg = () => {
             <Navigation></Navigation>
             <Container maxWidth="xl"
                 sx={{
-                    border: 1, my: 10, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderColor: 'grey.500', boxShadow: 1, fontStyle: 'italic', fontWeight: "bold"
+                    border: 1, my: 5, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderColor: 'grey.500', boxShadow: 1, fontStyle: 'italic', fontWeight: "bold"
                 }}
                 style={{
-                    height: "100vh", backgroundColor: "#fafafa"
+                    height: "120vh", backgroundColor: "#fafafa"
                 }}
             >
 
@@ -108,7 +109,8 @@ const LoginAndReg = () => {
                         </Container>
                         // else
                         :
-                        <Container>
+                        <Container >
+
                             <Box >
                                 <Typography variant="h3" gutterBottom component="div" sx={{ letterSpacing: 3, textDecoration: "underline" }} >
                                     Registration

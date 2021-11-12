@@ -3,6 +3,7 @@ import initFirebase from '../Firebase/Firebase.init'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { useHistory } from 'react-router';
 import { Alert } from '@mui/material';
+import axios from 'axios';
 initFirebase();
 const useFirebase = () => {
     /* 
@@ -26,6 +27,8 @@ const useFirebase = () => {
             .then(result => {
                 setIsloading(true);
                 setUser(result.user);
+                // a function will be called to store the user in our db
+                saveUsers(result.user.email)
                 setIsloading(false);
                 setAuthStatus("Sucessfull");
 
@@ -44,6 +47,7 @@ const useFirebase = () => {
             .then((result) => {
                 setIsloading(true);
                 setUser(result.user);
+                saveUsers(result?.user?.email)
                 setIsloading(false);
                 setAuthStatus("Sucessfull");
             })
@@ -71,6 +75,13 @@ const useFirebase = () => {
             alert("Try again");
         });
     }
+    // ---------------------------------------------------------------
+    // function to save user to our db
+    const saveUsers = (email) => {
+        axios.post("http://localhost:5000/users", { email: email })
+            .then(console.log("going"))
+    }
+
     return {
         user,
         loginWithEmailPass,
