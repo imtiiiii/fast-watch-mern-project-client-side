@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Components/Home/Home/Home';
 import LoginAndReg from './Components/LoginAndReg/LoginAndReg'
 import AuthProvider from './Context/AuthProvider';
+const axios = require('axios');
 function App() {
   return (
     <div className="App">
