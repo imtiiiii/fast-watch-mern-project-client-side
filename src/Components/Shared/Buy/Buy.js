@@ -21,7 +21,7 @@ const Buy = () => {
                 setProduct(res.data);
             })
     }, [user])
-    console.log(product);
+    // console.log(product);
     const onSubmit = data => {
         console.log(data);
 
@@ -32,10 +32,10 @@ const Buy = () => {
         //     });
 
     }
-    let history = useHistory();
-    const handlePayNow = () => {
-        history.push('/pay')
-    }
+    // let history = useHistory();
+    // const handlePayNow = () => {
+    //     history.push('/pay')
+    // }
 
     return (
         <Container style={{ backgroundColor: "#AEF2DE" }} sx={{ mt: 5, borderRadius: 12, boxShadow: 3 }}>
@@ -44,41 +44,46 @@ const Buy = () => {
             </Typography>
             <Grid container spacing={3} >
                 {
-                    user?.email &&
-                    <Grid item lg={6}>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div>
-                                <TextField id="standard-basic" label="user name" variant="standard"
-                                    sx={{ width: "50%", my: 4 }}
-                                    {...register("name", { required: true })}
+                    user?.email && product?._id ?
+                        <Grid item lg={6}>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div>
+                                    <TextField id="standard-basic" label="user name" variant="standard"
+                                        sx={{ width: "50%", my: 4 }}
+                                        {...register("name", { required: true })}
 
-                                />
-                            </div>
-                            <div>
-                                <TextField id="standard-basic" label="email" variant="standard"
-                                    sx={{ width: "50%", my: 4 }} defaultValue={user?.email}
-                                    {...register("email", { required: true })}
-                                />
-                            </div>
-                            <div>
-                                <TextField id="standard-basic" label="price" variant="standard" sx={{ width: "50%", my: 4 }}
-                                    {...register("price", { required: true })} />
-                            </div>
-                            <div>
-                                <TextField id="standard-basic" label="status" variant="standard" sx={{ width: "50%", my: 4 }}
-                                    {...register("status", { required: true })} defaultValue="pending" />
-                            </div>
-                            <div>
-                                <Button size="large" style={{ color: "black" }}
-                                    onClick={handlePayNow}
+                                    />
+                                </div>
+                                <div>
+                                    <TextField id="standard-basic" label="email" variant="standard"
+                                        sx={{ width: "50%", my: 4 }} value={user?.email}
+                                        {...register("email", { required: true })}
+                                    />
+                                </div>
+                                <div>
+                                    <TextField id="standard-basic" label="price" variant="standard" sx={{ width: "50%", my: 4 }}
+                                        {...register("price", { required: true })} value={product?.price} />
+                                </div>
+                                <div>
+                                    <TextField id="standard-basic" label="status" variant="standard" sx={{ width: "50%", my: 4 }}
+                                        {...register("status", { required: true })} value="pending" />
+                                </div>
+                                <div>
+                                    <TextField id="standard-basic" label="product code" variant="standard" sx={{ width: "50%", my: 4 }}
+                                        {...register("productId", { required: true })} value={product?._id} />
+                                </div>
+                                <div>
+                                    <Button size="large" type="submit" style={{ color: "black" }}
 
-                                >
-                                    Pay Now
-                                </Button>
-                            </div>
 
-                        </form>
-                    </Grid>
+                                    >
+                                        Pay Now
+                                    </Button>
+                                </div>
+
+                            </form>
+                        </Grid>
+                        : <></>
                 }
                 <Grid item lg={4} xs={11} sx={{ my: 5 }}>
                     <Card sx={{ maxWidth: 345 }}>
