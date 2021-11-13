@@ -19,7 +19,7 @@ const MyBookings = () => {
         <Box style={{ width: "100%", m: 5 }} >
             <Grid container spacing={3} sx={{ mt: 3, mx: 3 }}>
                 {
-                    data.map(ele => <DisplayBookings id={ele.productId} key={key++} role={"user"} status={ele.status}></DisplayBookings>)
+                    data.map(ele => <DisplayBookings id={ele.productId} _id={ele._id} key={key++} role={"user"} status={ele.status}></DisplayBookings>)
                 }
             </Grid>
         </Box>

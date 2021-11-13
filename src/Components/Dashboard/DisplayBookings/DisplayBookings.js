@@ -4,8 +4,8 @@ import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } f
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/system';
 
-const DisplayBookings = ({ id, role, status, email }) => {
-    console.log(role, status);
+const DisplayBookings = ({ id, role, status, email, _id }) => {
+
     const [currentStatus, setCurrentStatus] = useState(status)
     const [product, setProduct] = useState([])
     useEffect(() => {
@@ -20,6 +20,10 @@ const DisplayBookings = ({ id, role, status, email }) => {
     const handleApprove = () => {
         axios.put(`http://localhost:5000/bookings/all`, { status: "approved", email: email, id })
             .then(setCurrentStatus("approved"))
+    }
+    const handleDelete = () => {
+        axios.delete(`http://localhost:5000/bookings/all?id=${_id}`)
+            .then(res => console.log(res))
     }
     return (
 
@@ -56,8 +60,10 @@ const DisplayBookings = ({ id, role, status, email }) => {
                     <Button size="large" style={{ color: "black" }}>${price}</Button>
                     {
                         role === "user" &&
-                        <Button size="medium" style={{ color: "black" }}>{status}</Button>
-
+                        <>
+                            <Button size="medium" style={{ color: "black" }}>{status}</Button>
+                            <Button size="medium" style={{ color: "black" }} onClick={handleDelete}>Delete</Button>
+                        </>
                     }
                     {
                         role === "admin" &&

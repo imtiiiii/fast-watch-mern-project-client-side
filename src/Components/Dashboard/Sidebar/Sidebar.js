@@ -44,8 +44,6 @@ function Sidebar(props) {
     // nested route
 
     let { path, url } = useRouteMatch();
-    console.log(path, url);
-
 
 
     // ____________________________________________________

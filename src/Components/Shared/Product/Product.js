@@ -1,14 +1,22 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import axios from 'axios';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
 
 const Product = (props) => {
+    const { user, isAdmin } = useAuth();
+    console.log(isAdmin);
     let history = useHistory();
     const { name, info, price, img } = props.product;
     const handleBuy = (id) => {
         history.push(`/${id}`)
+    }
+    const handleDelete = () => {
+        axios.delete(`http://localhost:5000/products/explore/${props.product._id}`)
+            .then(res => console.log(res))
     }
     return (
         <>
@@ -42,12 +50,18 @@ const Product = (props) => {
                         sx={{ boxShadow: 1 }}
                     >
                         <Button size="large" style={{ color: "black" }}>${price}</Button>
-                        <Button size="large" style={{ color: "black" }}
-                            onClick={() => handleBuy(props.product._id)}
+                        {
+                            isAdmin ? <Button size="large" onClick={handleDelete} style={{ color: "black" }}>
+                                Delete
+                            </Button>
+                                :
+                                <Button size="large" style={{ color: "black" }}
+                                    onClick={() => handleBuy(props.product._id)}
+                                >
+                                    Buy
+                                </Button>
+                        }
 
-                        >
-                            Buy
-                        </Button>
                     </CardActions>
                 </Card>
             </Grid >

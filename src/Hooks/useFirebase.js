@@ -20,13 +20,15 @@ const useFirebase = () => {
     // * then if the user do any activity of login/logout/reg it will be true
     // *after the data gets loaded the state will be false
     const [isLoading, setIsloading] = useState(null);
+    // decide whether user is admin or not
+
 
     const auth = getAuth();
     const CreateAccountWithEmailPass = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setIsloading("true");
-                setUser(result.user);
+                // setUser(result.user);
                 // a function will be called to store the user in our db
                 saveUsers(result.user.email)
                 setIsloading("false");
@@ -46,10 +48,11 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 setIsloading("true");
-                setUser(result.user);
-                saveUsers(result?.user?.email)
+
+
                 setIsloading("false");
                 setAuthStatus("Sucessfull");
+                // checkAdmin();
             })
             .catch((error) => {
                 if (isLoading === false) {
@@ -57,7 +60,7 @@ const useFirebase = () => {
                 }
             });
     }
-    // fucntion for google sign in 
+
     useEffect(() => {
         setIsloading("true")
         onAuthStateChanged(auth, (user) => {
@@ -82,8 +85,22 @@ const useFirebase = () => {
     // function to save user to our db
     const saveUsers = (email) => {
         axios.post("http://localhost:5000/users", { email: email })
-            .then(console.log("going"))
+            .then()
     }
+    const [isAdmin, setIsAdmin] = useState(false)
+    // // keep user information from your own db
+    const [userDb, setUserDb] = useState({})
+    useEffect(() => {
+
+        axios.get(`http://localhost:5000/users?email=${user?.email}`)
+            .then(res => {
+                if (res?.data?.role === "admin") setIsAdmin(true);
+                else setIsAdmin(false);
+            })
+    }, [user])
+
+    // if (userDb?.role === "admin") setIsAdmin(true)
+    // else setIsAdmin(false);
 
     return {
         user,
@@ -91,7 +108,8 @@ const useFirebase = () => {
         authStatus,
         CreateAccountWithEmailPass,
         handleLogout,
-        isLoading
+        isLoading,
+        isAdmin
     }
 }
 export default useFirebase;
