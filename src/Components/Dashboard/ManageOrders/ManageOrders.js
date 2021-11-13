@@ -31,7 +31,9 @@ const ManageOrders = () => {
             >
 
                 <Container sx={{ borderRadius: 16, boxShadow: 3 }}>
-                    <Typography container="div" variant="h2" sx={{ letterSpacing: 3, color: grey.A400, my: 3, py: 3 }}>
+                    <Typography container="div" variant="h2" sx={{
+                        letterSpacing: 3, color: grey.A400, my: 3, py: 3
+                    }}>
                         Manage Orders
                     </Typography>
                     <Grid container spacing={4}>
