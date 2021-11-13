@@ -25,11 +25,11 @@ const Buy = () => {
     const onSubmit = data => {
         console.log(data);
 
-        // axios.post("http://localhost:5000/allbookings", data)
-        //     .then(res => {
-        //         console.log(res);
-        //         reset();
-        //     });
+        axios.post("http://localhost:5000/bookings", data)
+            .then(res => {
+                console.log(res);
+                reset();
+            });
 
     }
     // let history = useHistory();
@@ -45,7 +45,7 @@ const Buy = () => {
             <Grid container spacing={3} >
                 {
                     user?.email && product?._id ?
-                        <Grid item lg={6}>
+                        <Grid item lg={6} xs={11}>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div>
                                     <TextField id="standard-basic" label="user name" variant="standard"
@@ -85,7 +85,7 @@ const Buy = () => {
                         </Grid>
                         : <></>
                 }
-                <Grid item lg={4} xs={11} sx={{ my: 5 }}>
+                <Grid item lg={6} xs={11} sx={{ my: 5 }}>
                     <Card sx={{ maxWidth: 345 }}>
 
                         <CardMedia
