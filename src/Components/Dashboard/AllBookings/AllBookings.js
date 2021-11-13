@@ -18,7 +18,7 @@ const AllBookings = () => {
         <Box style={{ width: "100%", }} >
             <Grid container spacing={3} sx={{ mt: 3, mx: 3 }}>
                 {
-                    data.map(ele => <DisplayBookings id={ele.productId} key={key++} role={"admin"} status={ele.status}></DisplayBookings>)
+                    data.map(ele => <DisplayBookings id={ele.productId} key={key++} role={"admin"} email={ele.email} status={ele.status}></DisplayBookings>)
                 }
             </Grid>
         </Box>

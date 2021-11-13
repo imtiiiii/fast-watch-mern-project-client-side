@@ -4,8 +4,9 @@ import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } f
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/system';
 
-const DisplayBookings = ({ id, role, status }) => {
+const DisplayBookings = ({ id, role, status, email }) => {
     console.log(role, status);
+    const [currentStatus, setCurrentStatus] = useState(status)
     const [product, setProduct] = useState([])
     useEffect(() => {
         axios.get(`http://localhost:5000/products/explore/${id}`)
@@ -14,7 +15,12 @@ const DisplayBookings = ({ id, role, status }) => {
                 setProduct(res.data)
             })
     }, [])
-    const { img, name, info, price } = product
+    const { img, name, info, price } = product;
+
+    const handleApprove = () => {
+        axios.put(`http://localhost:5000/bookings/all`, { status: "approved", email: email, id })
+            .then(setCurrentStatus("approved"))
+    }
     return (
 
 
@@ -56,8 +62,8 @@ const DisplayBookings = ({ id, role, status }) => {
                     {
                         role === "admin" &&
                         <>
-                            <Button size="medium" style={{ color: "black" }}>{status}</Button>
-                            <Button size="large" variant="contained" style={{ color: "black" }}>Approve</Button>
+                            <Button size="medium" style={{ color: "black" }}>{currentStatus}</Button>
+                            <Button size="large" variant="contained" style={{ color: "black" }} onClick={handleApprove}>Approve</Button>
                         </>
                     }
 
