@@ -32,6 +32,7 @@ import AddProduct from '../AddProduct/AddProduct';
 import ManageOrders from '../ManageOrders/ManageOrders';
 import useAuth from '../../../Hooks/useAuth';
 import AdminRoute from '../../AdminRoute/AdminRoute';
+import Review from '../Review/Review';
 
 
 const drawerWidth = 240;
@@ -65,6 +66,8 @@ function Sidebar(props) {
                 <div>
                 </div>
                 <Button color="inherit"> <NavLink to={`${url}/mybookings`} style={{ textDecoration: "none", color: "black" }} >My Bookings</NavLink></Button>
+                <div></div>
+                <Button color="inherit"> <NavLink to={`${url}/review`} style={{ textDecoration: "none", color: "black" }} >Give Review</NavLink></Button>
                 <div></div>
                 {
                     user.email && isAdmin ?
@@ -137,6 +140,9 @@ function Sidebar(props) {
                 </AdminRoute>
                 <AdminRoute path={`${path}/addproduct`}>
                     <AddProduct></AddProduct>
+                </AdminRoute>
+                <AdminRoute path={`${path}/review`}>
+                    <Review></Review>
                 </AdminRoute>
                 <AdminRoute path={`${path}/manageproducts`}>
                     <ManageOrders></ManageOrders>

@@ -9,6 +9,7 @@ import AddProduct from './Components/Dashboard/AddProduct/AddProduct';
 import Buy from './Components/Shared/Buy/Buy';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Reviews from './Components/Header/Reviews/Reviews';
 const axios = require('axios');
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
+
             <Route path="/login">
               <LoginAndReg></LoginAndReg>
             </Route>

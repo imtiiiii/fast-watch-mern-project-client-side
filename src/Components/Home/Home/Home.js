@@ -2,6 +2,7 @@
 import { Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import Header from '../../Header/Header/Header';
+import Reviews from '../../Header/Reviews/Reviews';
 import Navigation from '../../Shared/Navigation/Navigation';
 import FeatureOfNewWatch from '../FeatureOfNewWatch/FeatureOfNewWatch';
 import FocusedProduct from '../FocusedProduct/FocusedProduct';
@@ -14,6 +15,7 @@ const Home = () => {
             <FocusedProduct></FocusedProduct>
             <FeatureOfNewWatch></FeatureOfNewWatch>
             <ProductsSummary></ProductsSummary>
+            <Reviews></Reviews>
         </div>
     );
 };
