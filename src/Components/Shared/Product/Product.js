@@ -8,15 +8,19 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Product = (props) => {
     const { user, isAdmin } = useAuth();
-    console.log(isAdmin);
+    console.log(props.role);
     let history = useHistory();
     const { name, info, price, img } = props.product;
     const handleBuy = (id) => {
         history.push(`/${id}`)
     }
     const handleDelete = () => {
-        axios.delete(`http://localhost:5000/products/explore/${props.product._id}`)
-            .then(res => console.log(res))
+        let x = window.confirm("Are you sure ?")
+        if (x) {
+            axios.delete(`http://localhost:5000/products/explore/${props.product._id}`)
+                .then(res => console.log(res))
+        }
+
     }
     return (
         <>
@@ -51,7 +55,7 @@ const Product = (props) => {
                     >
                         <Button size="large" style={{ color: "black" }}>${price}</Button>
                         {
-                            isAdmin ? <Button size="large" onClick={handleDelete} style={{ color: "black" }}>
+                            props?.role === "admin" ? <Button size="large" onClick={handleDelete} style={{ color: "black" }}>
                                 Delete
                             </Button>
                                 :

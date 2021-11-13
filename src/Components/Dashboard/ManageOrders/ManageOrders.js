@@ -38,7 +38,7 @@ const ManageOrders = () => {
                     </Typography>
                     <Grid container spacing={4}>
                         {
-                            products.map(product => <Product key={key++} product={product}>hello</Product>)
+                            products.map(product => <Product key={key++} product={product} role={"admin"}></Product>)
                         }
                     </Grid>
 

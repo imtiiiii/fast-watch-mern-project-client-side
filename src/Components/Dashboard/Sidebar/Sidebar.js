@@ -73,7 +73,7 @@ function Sidebar(props) {
                             <div></div>
                             <Button color="inherit"> <NavLink to={`${url}/addproduct`} style={{ textDecoration: "none", color: "black" }} >Add Product</NavLink></Button>
                             <div></div>
-                            <Button color="inherit"> <NavLink to={`${url}/manageorders`} style={{ textDecoration: "none", color: "black" }} >Manage Orders</NavLink></Button>
+                            <Button color="inherit"> <NavLink to={`${url}/manageproducts`} style={{ textDecoration: "none", color: "black" }} >Manage Products</NavLink></Button>
                             <div></div>
                             <Button color="inherit"> <NavLink to={`${url}/makeadmin`} style={{ textDecoration: "none", color: "black" }} >Make Admin</NavLink></Button>
                         </>
@@ -138,7 +138,7 @@ function Sidebar(props) {
                 <AdminRoute path={`${path}/addproduct`}>
                     <AddProduct></AddProduct>
                 </AdminRoute>
-                <AdminRoute path={`${path}/manageorders`}>
+                <AdminRoute path={`${path}/manageproducts`}>
                     <ManageOrders></ManageOrders>
                 </AdminRoute>
             </Switch>

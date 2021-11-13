@@ -18,12 +18,17 @@ const DisplayBookings = ({ id, role, status, email, _id }) => {
     const { img, name, info, price } = product;
 
     const handleApprove = () => {
-        axios.put(`http://localhost:5000/bookings/all`, { status: "approved", email: email, id })
-            .then(setCurrentStatus("approved"))
+        axios.put(`http://localhost:5000/bookings/all`, { status: "shipped", email: email, id })
+            .then(setCurrentStatus("shipped"))
     }
+    let confirmCancel = 0;
     const handleDelete = () => {
-        axios.delete(`http://localhost:5000/bookings/all?id=${_id}`)
-            .then(res => console.log(res))
+        confirmCancel = window.confirm("Are you sure you want to Cancel this order?");
+        if (confirmCancel) {
+            axios.delete(`http://localhost:5000/bookings/all?id=${_id}`)
+                .then(res => console.log(res))
+        }
+
     }
     return (
 
@@ -62,14 +67,14 @@ const DisplayBookings = ({ id, role, status, email, _id }) => {
                         role === "user" &&
                         <>
                             <Button size="medium" style={{ color: "black" }}>{status}</Button>
-                            <Button size="medium" style={{ color: "black" }} onClick={handleDelete}>Delete</Button>
+                            <Button size="medium" style={{ color: "black" }} onClick={handleDelete}>Cancel</Button>
                         </>
                     }
                     {
                         role === "admin" &&
                         <>
                             <Button size="medium" style={{ color: "black" }}>{currentStatus}</Button>
-                            <Button size="large" variant="contained" style={{ color: "black" }} onClick={handleApprove}>Approve</Button>
+                            <Button size="large" variant="contained" style={{ color: "black" }} onClick={handleApprove}>Ship</Button>
                         </>
                     }
 
