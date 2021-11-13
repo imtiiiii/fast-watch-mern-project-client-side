@@ -29,6 +29,7 @@ import MyBookings from '../MyBookings/MyBookings';
 import AllBookings from '../AllBookings/AllBookings';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProduct from '../AddProduct/AddProduct';
+import ManageOrders from '../ManageOrders/ManageOrders';
 
 
 const drawerWidth = 240;
@@ -67,6 +68,8 @@ function Sidebar(props) {
                 <Button color="inherit"> <NavLink to={`${url}/allbookings`} style={{ textDecoration: "none", color: "black" }} >All Bookings</NavLink></Button>
                 <div></div>
                 <Button color="inherit"> <NavLink to={`${url}/addproduct`} style={{ textDecoration: "none", color: "black" }} >Add Product</NavLink></Button>
+                <div></div>
+                <Button color="inherit"> <NavLink to={`${url}/manageorders`} style={{ textDecoration: "none", color: "black" }} >Manage Orders</NavLink></Button>
                 <div></div>
                 <Button color="inherit"> <NavLink to={`${url}/makeadmin`} style={{ textDecoration: "none", color: "black" }} >Make Admin</NavLink></Button>
             </List>
@@ -126,6 +129,9 @@ function Sidebar(props) {
                 </Route>
                 <Route path={`${path}/addproduct`}>
                     <AddProduct></AddProduct>
+                </Route>
+                <Route path={`${path}/manageorders`}>
+                    <ManageOrders></ManageOrders>
                 </Route>
             </Switch>
 
