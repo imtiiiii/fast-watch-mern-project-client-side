@@ -18,7 +18,7 @@ const ProductsSummary = () => {
             sx={{ border: 2, mb: 5 }}
             style={{ backgroundColor: "#04091e" }}
         >
-            <Typography container variant="h2" sx={{ letterSpacing: 3, color: grey.A400, my: 3 }}>
+            <Typography container="div" variant="h2" sx={{ letterSpacing: 3, color: grey.A400, my: 3 }}>
                 TAKE A GLANCE TO OUR WATCH COLLECTIONS
             </Typography>
             <Container sx={{ my: 8, borderRadius: 16, boxShadow: 3 }}>

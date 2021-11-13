@@ -26,7 +26,7 @@ const ExploreProducts = () => {
             }
             sx={{}}
         >
-            <Typography container variant="h2" sx={{ letterSpacing: 3, color: grey.A400, mb: 3 }}>
+            <Typography container="div" variant="h2" sx={{ letterSpacing: 3, color: grey.A400, mb: 3 }}>
                 EXPLORE OUR PRODUCTS
             </Typography>
             <Container sx={{ borderRadius: 16, boxShadow: 3 }}>

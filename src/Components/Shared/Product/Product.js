@@ -1,8 +1,15 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+
 
 const Product = (props) => {
+    let history = useHistory();
     const { name, info, price, img } = props.product;
+    const handleBuy = (id) => {
+        history.push(`/${id}`)
+    }
     return (
         <>
             <Grid item lg={4} xs={11} sx={{ my: 5 }}>
@@ -35,7 +42,12 @@ const Product = (props) => {
                         sx={{ boxShadow: 1 }}
                     >
                         <Button size="large" style={{ color: "black" }}>${price}</Button>
-                        <Button size="large" style={{ color: "black" }}>Buy</Button>
+                        <Button size="large" style={{ color: "black" }}
+                            onClick={() => handleBuy(props.product._id)}
+
+                        >
+                            Buy
+                        </Button>
                     </CardActions>
                 </Card>
             </Grid >

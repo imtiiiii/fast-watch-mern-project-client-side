@@ -6,6 +6,7 @@ import LoginAndReg from './Components/LoginAndReg/LoginAndReg'
 import AuthProvider from './Context/AuthProvider';
 import ExploreProducts from './Components/ExploreProducts/ExploreProducts';
 import AddProduct from './Components/AddProduct/AddProduct';
+import Buy from './Components/Shared/Buy/Buy';
 const axios = require('axios');
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
             <Route path="/addproduct">
               <AddProduct></AddProduct>
             </Route>
-
+            <Route path="/:buy">
+              <Buy></Buy>
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>
