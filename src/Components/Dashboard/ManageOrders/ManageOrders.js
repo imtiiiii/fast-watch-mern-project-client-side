@@ -11,7 +11,7 @@ const ManageOrders = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/products/explore")
+        axios.get("https://salty-lowlands-53344.herokuapp.com/products/explore")
             .then(res => setProducts(res.data))
     }, [])
     return (

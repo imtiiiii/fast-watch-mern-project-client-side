@@ -11,7 +11,7 @@ const ProductsSummary = () => {
     let key = 1;
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:5000/products")
+        axios.get("https://salty-lowlands-53344.herokuapp.com/products")
             .then(res => setProducts(res.data))
     }, [])
     const handleExploreMore = () => {

@@ -9,7 +9,7 @@ const DisplayBookings = ({ id, role, status, email, _id }) => {
     const [currentStatus, setCurrentStatus] = useState(status)
     const [product, setProduct] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/products/explore/${id}`)
+        axios.get(`https://salty-lowlands-53344.herokuapp.com/products/explore/${id}`)
             .then(res => {
                 // console.log(res.data)
                 setProduct(res.data)
@@ -18,14 +18,14 @@ const DisplayBookings = ({ id, role, status, email, _id }) => {
     const { img, name, info, price } = product;
 
     const handleApprove = () => {
-        axios.put(`http://localhost:5000/bookings/all`, { status: "shipped", email: email, id })
+        axios.put(`https://salty-lowlands-53344.herokuapp.com/bookings/all`, { status: "shipped", email: email, id })
             .then(setCurrentStatus("shipped"))
     }
     let confirmCancel = 0;
     const handleDelete = () => {
         confirmCancel = window.confirm("Are you sure you want to Cancel this order?");
         if (confirmCancel) {
-            axios.delete(`http://localhost:5000/bookings/all?id=${_id}`)
+            axios.delete(`https://salty-lowlands-53344.herokuapp.com/bookings/all?id=${_id}`)
                 .then(res => console.log(res))
         }
 

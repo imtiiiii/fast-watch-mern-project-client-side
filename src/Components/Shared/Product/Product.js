@@ -17,7 +17,7 @@ const Product = (props) => {
     const handleDelete = () => {
         let x = window.confirm("Are you sure ?")
         if (x) {
-            axios.delete(`http://localhost:5000/products/explore/${props.product._id}`)
+            axios.delete(`https://salty-lowlands-53344.herokuapp.com/products/explore/${props.product._id}`)
                 .then(res => console.log(res))
         }
 

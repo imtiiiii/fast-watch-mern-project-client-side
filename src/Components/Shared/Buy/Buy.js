@@ -16,7 +16,7 @@ const Buy = () => {
     // console.log(bookedId)
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     useEffect(() => {
-        axios.get(`http://localhost:5000/products/explore/${bookedId.buy}`)
+        axios.get(`https://salty-lowlands-53344.herokuapp.com/products/explore/${bookedId.buy}`)
             .then(res => {
                 // console.log(res.data)
                 setProduct(res.data);
@@ -26,7 +26,7 @@ const Buy = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post("http://localhost:5000/bookings", data)
+        axios.post("https://salty-lowlands-53344.herokuapp.com/bookings", data)
             .then(res => {
                 console.log(res);
                 reset();

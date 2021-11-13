@@ -16,7 +16,7 @@ const Review = () => {
             review: review
         }
         document.reviewForm.reset();
-        axios.post("http://localhost:5000/reviews", data)
+        axios.post("https://salty-lowlands-53344.herokuapp.com/reviews", data)
             .then(res => console.log(res.data));
     }
     return (

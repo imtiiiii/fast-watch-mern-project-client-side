@@ -11,7 +11,7 @@ const AllBookings = () => {
     const [data, setData] = useState([])
     const email = user.email;
     useEffect(() => {
-        axios.get(`http://localhost:5000/bookings/all`)
+        axios.get(`https://salty-lowlands-53344.herokuapp.com/bookings/all`)
             .then(res => setData(res.data))
     }, [])
     return (

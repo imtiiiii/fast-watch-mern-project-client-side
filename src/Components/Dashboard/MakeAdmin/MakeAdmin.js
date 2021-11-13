@@ -13,7 +13,7 @@ const MakeAdmin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
-        axios.put("http://localhost:5000/users/all", { email: email })
+        axios.put("https://salty-lowlands-53344.herokuapp.com/users/all", { email: email })
             .then(res => console.log(res))
         document.makeadmin.reset();
     }

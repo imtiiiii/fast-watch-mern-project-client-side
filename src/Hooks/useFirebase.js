@@ -84,7 +84,7 @@ const useFirebase = () => {
     // ---------------------------------------------------------------
     // function to save user to our db
     const saveUsers = (email) => {
-        axios.post("http://localhost:5000/users", { email: email })
+        axios.post("https://salty-lowlands-53344.herokuapp.com/users", { email: email })
             .then()
     }
     const [isAdmin, setIsAdmin] = useState(false)
@@ -92,7 +92,7 @@ const useFirebase = () => {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:5000/users?email=${user?.email}`)
+        axios.get(`https://salty-lowlands-53344.herokuapp.com/users?email=${user?.email}`)
             .then(res => {
 
                 if (res?.data?.role === "admin") {
