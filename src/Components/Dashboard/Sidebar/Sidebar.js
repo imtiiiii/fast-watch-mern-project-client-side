@@ -30,11 +30,14 @@ import AllBookings from '../AllBookings/AllBookings';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProduct from '../AddProduct/AddProduct';
 import ManageOrders from '../ManageOrders/ManageOrders';
+import useAuth from '../../../Hooks/useAuth';
+import AdminRoute from '../../AdminRoute/AdminRoute';
 
 
 const drawerWidth = 240;
 
 function Sidebar(props) {
+    const { user, isAdmin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -63,13 +66,19 @@ function Sidebar(props) {
                 </div>
                 <Button color="inherit"> <NavLink to={`${url}/mybookings`} style={{ textDecoration: "none", color: "black" }} >My Bookings</NavLink></Button>
                 <div></div>
-                <Button color="inherit"> <NavLink to={`${url}/allbookings`} style={{ textDecoration: "none", color: "black" }} >All Bookings</NavLink></Button>
-                <div></div>
-                <Button color="inherit"> <NavLink to={`${url}/addproduct`} style={{ textDecoration: "none", color: "black" }} >Add Product</NavLink></Button>
-                <div></div>
-                <Button color="inherit"> <NavLink to={`${url}/manageorders`} style={{ textDecoration: "none", color: "black" }} >Manage Orders</NavLink></Button>
-                <div></div>
-                <Button color="inherit"> <NavLink to={`${url}/makeadmin`} style={{ textDecoration: "none", color: "black" }} >Make Admin</NavLink></Button>
+                {
+                    isAdmin && user?.email &&
+                    <>
+                        <Button color="inherit"> <NavLink to={`${url}/allbookings`} style={{ textDecoration: "none", color: "black" }} >All Bookings</NavLink></Button>
+                        <div></div>
+                        <Button color="inherit"> <NavLink to={`${url}/addproduct`} style={{ textDecoration: "none", color: "black" }} >Add Product</NavLink></Button>
+                        <div></div>
+                        <Button color="inherit"> <NavLink to={`${url}/manageorders`} style={{ textDecoration: "none", color: "black" }} >Manage Orders</NavLink></Button>
+                        <div></div>
+                        <Button color="inherit"> <NavLink to={`${url}/makeadmin`} style={{ textDecoration: "none", color: "black" }} >Make Admin</NavLink></Button>
+                    </>
+                }
+
             </List>
         </div>
     );
@@ -119,18 +128,18 @@ function Sidebar(props) {
                 <Route path={`${path}/mybookings`}>
                     <MyBookings></MyBookings>
                 </Route>
-                <Route path={`${path}/allbookings`}>
+                <AdminRoute> path={`${path}/allbookings`}>
                     <AllBookings></AllBookings>
-                </Route>
-                <Route path={`${path}/makeadmin`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/makeadmin`}>
                     <MakeAdmin></MakeAdmin>
-                </Route>
-                <Route path={`${path}/addproduct`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/addproduct`}>
                     <AddProduct></AddProduct>
-                </Route>
-                <Route path={`${path}/manageorders`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/manageorders`}>
                     <ManageOrders></ManageOrders>
-                </Route>
+                </AdminRoute>
             </Switch>
 
 

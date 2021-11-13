@@ -97,7 +97,7 @@ const useFirebase = () => {
                 if (res?.data?.role === "admin") setIsAdmin(true);
                 else setIsAdmin(false);
             })
-    }, [user])
+    }, [user?.email])
 
     // if (userDb?.role === "admin") setIsAdmin(true)
     // else setIsAdmin(false);
