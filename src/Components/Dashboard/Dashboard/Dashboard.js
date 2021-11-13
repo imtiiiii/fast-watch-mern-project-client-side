@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import useAuth from '../../../Hooks/useAuth';
 import { NavLink } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
 const Dashboard = () => {
     const { handleLogout, user } = useAuth();
     return (
@@ -36,6 +37,7 @@ const Dashboard = () => {
                     }
                 </Toolbar>
             </AppBar>
+            <Sidebar></Sidebar>
         </Box>
     );
 };

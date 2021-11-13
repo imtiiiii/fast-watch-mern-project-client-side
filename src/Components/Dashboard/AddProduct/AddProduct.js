@@ -19,7 +19,7 @@ const AddProduct = () => {
         <Box style={{
             height: "100vh", backgroundColor: "#DFE4E0"
 
-        }} sx={{ border: 2 }} >
+        }} sx={{ border: 2, width: 1 }} >
             <Typography component="div" variant="h4" sx={{ letterSpacing: 3, my: 3 }}>
                 Add Product
             </Typography>

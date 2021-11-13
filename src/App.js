@@ -5,7 +5,7 @@ import Home from './Components/Home/Home/Home';
 import LoginAndReg from './Components/LoginAndReg/LoginAndReg'
 import AuthProvider from './Context/AuthProvider';
 import ExploreProducts from './Components/ExploreProducts/ExploreProducts';
-import AddProduct from './Components/AddProduct/AddProduct';
+import AddProduct from './Components/Dashboard/AddProduct/AddProduct';
 import Buy from './Components/Shared/Buy/Buy';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
@@ -29,9 +29,9 @@ function App() {
             <Route path='/explore'>
               <ExploreProducts></ExploreProducts>
             </Route>
-            <PrivateRoute path="/addproduct">
+            {/* <PrivateRoute path="/addproduct">
               <AddProduct></AddProduct>
-            </PrivateRoute>
+            </PrivateRoute> */}
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
