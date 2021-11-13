@@ -7,6 +7,8 @@ import AuthProvider from './Context/AuthProvider';
 import ExploreProducts from './Components/ExploreProducts/ExploreProducts';
 import AddProduct from './Components/AddProduct/AddProduct';
 import Buy from './Components/Shared/Buy/Buy';
+import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 const axios = require('axios');
 function App() {
   return (
@@ -15,8 +17,10 @@ function App() {
       <AuthProvider>
         <Router>
           <Switch>
-            {/* Home compo */}
             <Route path="/" exact>
+              <Home></Home>
+            </Route>
+            <Route path="/home">
               <Home></Home>
             </Route>
             <Route path="/login">
@@ -25,16 +29,19 @@ function App() {
             <Route path='/explore'>
               <ExploreProducts></ExploreProducts>
             </Route>
-            <Route path="/addproduct">
+            <PrivateRoute path="/addproduct">
               <AddProduct></AddProduct>
-            </Route>
-            <Route path="/:buy">
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/:buy" exact>
               <Buy></Buy>
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </AuthProvider>
-    </div>
+    </div >
   );
 }
 

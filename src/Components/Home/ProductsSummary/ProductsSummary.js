@@ -3,16 +3,21 @@ import { grey } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import Product from '../../Shared/Product/Product';
 
 const ProductsSummary = () => {
+    let history = useHistory();
     let key = 1;
     const [products, setProducts] = useState([]);
     useEffect(() => {
         axios.get("http://localhost:5000/products")
             .then(res => setProducts(res.data))
     }, [])
-    // console.log(products);
+    const handleExploreMore = () => {
+
+        history.push('/explore')
+    }
     return (
         <Box
             sx={{ border: 2, mb: 5 }}
@@ -27,7 +32,7 @@ const ProductsSummary = () => {
                         products.map(product => <Product key={key++} product={product}>hello</Product>)
                     }
                 </Grid>
-                <Button variant="contained" sx={{ my: 4 }}>Explore More</Button>
+                <Button variant="contained" sx={{ my: 4 }} onClick={handleExploreMore}>Explore More</Button>
             </Container>
 
         </Box>

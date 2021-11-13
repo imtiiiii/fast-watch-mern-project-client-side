@@ -25,11 +25,11 @@ const useFirebase = () => {
     const CreateAccountWithEmailPass = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
-                setIsloading(true);
+                setIsloading("true");
                 setUser(result.user);
                 // a function will be called to store the user in our db
                 saveUsers(result.user.email)
-                setIsloading(false);
+                setIsloading("false");
                 setAuthStatus("Sucessfull");
 
             })
@@ -45,10 +45,10 @@ const useFirebase = () => {
     const loginWithEmailPass = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                setIsloading(true);
+                setIsloading("true");
                 setUser(result.user);
                 saveUsers(result?.user?.email)
-                setIsloading(false);
+                setIsloading("false");
                 setAuthStatus("Sucessfull");
             })
             .catch((error) => {
@@ -59,11 +59,14 @@ const useFirebase = () => {
     }
     // fucntion for google sign in 
     useEffect(() => {
+        setIsloading("true")
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+                setIsloading("false")
             } else {
                 setUser(null);
+                setIsloading("false")
             }
         });
     }, [])
