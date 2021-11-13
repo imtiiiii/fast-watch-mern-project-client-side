@@ -31,6 +31,7 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProduct from '../AddProduct/AddProduct';
 import ManageOrders from '../ManageOrders/ManageOrders';
 import useAuth from '../../../Hooks/useAuth';
+import AdminRoute from '../../AdminRoute/AdminRoute';
 
 
 const drawerWidth = 240;
@@ -128,18 +129,18 @@ function Sidebar(props) {
                 <Route path={`${path}/mybookings`}>
                     <MyBookings></MyBookings>
                 </Route>
-                <Route path={`${path}/allbookings`}>
+                <AdminRoute path={`${path}/allbookings`}>
                     <AllBookings></AllBookings>
-                </Route>
-                <Route path={`${path}/makeadmin`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/makeadmin`}>
                     <MakeAdmin></MakeAdmin>
-                </Route>
-                <Route path={`${path}/addproduct`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/addproduct`}>
                     <AddProduct></AddProduct>
-                </Route>
-                <Route path={`${path}/manageorders`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/manageorders`}>
                     <ManageOrders></ManageOrders>
-                </Route>
+                </AdminRoute>
             </Switch>
 
 

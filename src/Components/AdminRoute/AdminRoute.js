@@ -10,7 +10,7 @@ import useAuth from '../../Hooks/useAuth';
 const AdminRoute = ({ children, ...rest }) => {
     const { user, isLoading, isAdmin } = useAuth();
     console.log(isLoading)
-    if (isLoading === null || isLoading === "true")
+    if (isLoading === true)
         return < CircularProgress />
 
     return (
@@ -22,7 +22,7 @@ const AdminRoute = ({ children, ...rest }) => {
                     user?.email && isAdmin ? (children) :
                         <Redirect to={
                             {
-                                pathname: "/home",
+                                pathname: "/dashboard",
                                 state: { from: location },
 
 

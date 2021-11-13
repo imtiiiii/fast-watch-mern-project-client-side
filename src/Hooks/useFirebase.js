@@ -19,7 +19,7 @@ const useFirebase = () => {
     // *initially the state will be null 
     // * then if the user do any activity of login/logout/reg it will be true
     // *after the data gets loaded the state will be false
-    const [isLoading, setIsloading] = useState(null);
+    const [isLoading, setIsloading] = useState(true);
     // decide whether user is admin or not
 
 
@@ -27,11 +27,11 @@ const useFirebase = () => {
     const CreateAccountWithEmailPass = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
-                setIsloading("true");
+                setIsloading(true);
                 // setUser(result.user);
                 // a function will be called to store the user in our db
                 saveUsers(result.user.email)
-                setIsloading("false");
+                setIsloading(false);
                 setAuthStatus("Sucessfull");
 
             })
@@ -47,10 +47,10 @@ const useFirebase = () => {
     const loginWithEmailPass = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                setIsloading("true");
+                setIsloading(true);
 
 
-                setIsloading("false");
+                setIsloading(false);
                 setAuthStatus("Sucessfull");
                 // checkAdmin();
             })
@@ -62,14 +62,14 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
-        setIsloading("true")
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                setIsloading("false")
+
             } else {
                 setUser(null);
-                setIsloading("false")
+
             }
         });
     }, [])
@@ -89,13 +89,21 @@ const useFirebase = () => {
     }
     const [isAdmin, setIsAdmin] = useState(false)
     // // keep user information from your own db
-    const [userDb, setUserDb] = useState({})
+
     useEffect(() => {
 
         axios.get(`http://localhost:5000/users?email=${user?.email}`)
             .then(res => {
-                if (res?.data?.role === "admin") setIsAdmin(true);
-                else setIsAdmin(false);
+
+                if (res?.data?.role === "admin") {
+                    setIsAdmin(true);
+
+                }
+                else {
+
+                    setIsAdmin(false);
+                    setIsloading(false)
+                }
             })
     }, [user?.email])
 
