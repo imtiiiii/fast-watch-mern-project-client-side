@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import SingleReview from '../../Home/SingleReview/SingleReview';
-
+import bg from '../../../img/reviewbg2.jpg'
 const Reviews = () => {
     let key = 1;
     const [reviews, setReviews] = useState([])
@@ -13,10 +13,10 @@ const Reviews = () => {
     }, [])
     console.log(reviews)
     return (
-        <Box sx={{ border: 1, my: 5, py: 2 }} style={{ height: "100vh" }}>
-            <Typography component="div" variant="h3" sx={{ my: 3, py: 4 }}>Review from our valueable customers</Typography>
-            <Container>
-                <Grid container spacing={3}>
+        <Box sx={{ border: 1, my: 5, py: 2 }} style={{ height: "110vh", backgroundImage: `url(${bg})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
+            <Typography component="div" variant="h3" sx={{ my: 3, py: 4, fontWeight: "bold", letterSpacing: 3 }}>Review from our valueable customers</Typography>
+            <Container maxWidth="xl" sx={{}}>
+                <Grid container spacing={2}>
 
 
                     {
