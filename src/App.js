@@ -41,6 +41,7 @@ function App() {
               <Buy></Buy>
             </PrivateRoute>
           </Switch>
+
         </Router>
       </AuthProvider>
     </div >
